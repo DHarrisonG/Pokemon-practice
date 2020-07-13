@@ -4,7 +4,7 @@ import { Form } from 'semantic-ui-react'
 class PokemonForm extends React.Component {
   constructor() {
     super()
-
+ //test
     this.state = {
       name: '',
       hp: '',
