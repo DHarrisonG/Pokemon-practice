@@ -7,7 +7,9 @@ import { Container } from 'semantic-ui-react'
 class PokemonPage extends React.Component {
 
   state = {
-    pokes: []
+    pokes: [],
+    flipped: false
+
   }
 
   componentDidMount = () => {
@@ -16,12 +18,19 @@ class PokemonPage extends React.Component {
 
   fetchPokes = () => {
     fetch('http://localhost:3000/pokemon')
-    .then(res => res.json())
-    .then(pokes => {
-      console.log(pokes)
-      this.setState({
-        pokes: pokes
+      .then(res => res.json())
+      .then(pokes => {
+        console.log(pokes)
+        this.setState({
+          pokes: pokes
+        })
       })
+  }
+
+  handleClick = () => {
+    console.log("Click it or ticket!")
+    this.setState({
+      flipped: !this.state.flipped
     })
   }
 
@@ -34,7 +43,11 @@ class PokemonPage extends React.Component {
         <br />
         <Search />
         <br />
-        <PokemonCollection pokes={this.state.pokes}/>
+        <PokemonCollection
+          pokes={this.state.pokes}
+          flipped={this.state.flipped}
+          handleClick={this.handleClick}
+        />
       </Container>
     )
   }
