@@ -25,3 +25,5 @@ class PokemonCard extends React.Component {
 }
 
 export default PokemonCard
+
+//wwwwwtttttffffff
