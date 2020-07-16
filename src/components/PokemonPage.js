@@ -34,6 +34,10 @@ class PokemonPage extends React.Component {
     })
   }
 
+  handleSearch = () => {
+    
+  }
+
   render() {
     return (
       <Container>
