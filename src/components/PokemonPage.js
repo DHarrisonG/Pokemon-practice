@@ -8,8 +8,8 @@ class PokemonPage extends React.Component {
 
   state = {
     pokes: [],
-    flipped: false
-
+    flipped: false,
+    search: ''
   }
 
   componentDidMount = () => {
@@ -34,8 +34,12 @@ class PokemonPage extends React.Component {
     })
   }
 
-  handleSearch = () => {
-    
+  handleSearch = (e) => {
+    console.log(e.target.value)
+    this.setState({
+      search: e.target.value
+    })
+
   }
 
   render() {
@@ -45,10 +49,10 @@ class PokemonPage extends React.Component {
         <br />
         <PokemonForm />
         <br />
-        <Search />
+        <Search handleSearch={this.handleSearch}/>
         <br />
         <PokemonCollection
-          pokes={this.state.pokes}
+          pokes={this.state.pokes.filter((poke) => poke.name.includes(this.state.search))}
           flipped={this.state.flipped}
           handleClick={this.handleClick}
         />
