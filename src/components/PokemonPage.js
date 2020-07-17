@@ -25,12 +25,31 @@ class PokemonPage extends React.Component {
     })
   }
 
+  addPoke = (e) => {
+    e.preventDefault()
+    fetch('http://localhost:3000/pokemon', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: e.target.name.value,
+        hp: e.target.hp.value,
+        sprites: {
+          front: e.target.frontUrl,
+          back: e.target.backUrl
+        }
+      })
+    }).then(res => this.fetchPokes())
+  }
+
   render() {
     return (
       <Container>
         <h1>Pokemon Searcher</h1>
         <br />
-        <PokemonForm />
+        <PokemonForm addPoke={this.addPoke}/>
         <br />
         <Search />
         <br />
