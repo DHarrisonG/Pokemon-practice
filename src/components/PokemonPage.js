@@ -44,21 +44,30 @@ class PokemonPage extends React.Component {
 
   addPoke = (e) => {
     e.preventDefault()
+    console.log("Add Poke Submit")
+    console.log(e.target.name.value)
+    console.log(e.target.hp.value)
+    console.log(e.target.frontUrl.value)
+    console.log(e.target.backUrl.value)
+    const data = {
+      name: e.target.name.value,
+      hp: e.target.hp.value,
+      sprites: {
+        front: e.target.frontUrl.value,
+        back: e.target.backUrl.value
+      }
+    }
+    console.log(data)
+    
     fetch('http://localhost:3000/pokemon', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify({
-        name: e.target.name.value,
-        hp: e.target.hp.value,
-        sprites: {
-          front: e.target.frontUrl,
-          back: e.target.backUrl
-        }
-      })
-    }).then(res => this.fetchPokes())
+      body: JSON.stringify(data)
+    })
+    .then(res => this.fetchPokes())
   }
 
   render() {
@@ -66,9 +75,9 @@ class PokemonPage extends React.Component {
       <Container>
         <h1>Pokemon Searcher</h1>
         <br />
-        <PokemonForm addPoke={this.addPoke}/>
+        <PokemonForm addPoke={this.addPoke} />
         <br />
-        <Search handleSearch={this.handleSearch}/>
+        <Search handleSearch={this.handleSearch} />
         <br />
         <PokemonCollection
           pokes={this.state.pokes.filter((poke) => poke.name.includes(this.state.search))}
