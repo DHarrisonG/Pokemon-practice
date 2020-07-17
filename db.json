@@ -1340,6 +1340,15 @@
         "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
         "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/150.png"
       }
+    },
+    {
+      "name": "Mushroom Soup",
+      "hp": "5",
+      "sprites": {
+        "front": "https://i.imgur.com/dMUngbz.gif",
+        "back": "https://i.redd.it/houv9ztd99401.gif"
+      },
+      "id": 151
     }
   ]
 }
