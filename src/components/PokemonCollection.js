@@ -14,6 +14,8 @@ class PokemonCollection extends React.Component {
             hp={poke.hp}
             imageFront={poke.sprites.front}
             imageBack={poke.sprites.back}
+            flipped={this.props.flipped}
+            handleClick={this.props.handleClick}
           />
         })}
       </Card.Group>

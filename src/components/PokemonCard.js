@@ -7,7 +7,10 @@ class PokemonCard extends React.Component {
       <Card>
         <div>
           <div className="image">
-            <img src={this.props.imageFront} />
+            <img
+              src={this.props.flipped ? this.props.imageBack : this.props.imageFront}
+              onClick={this.props.handleClick}
+            />
           </div>
           <div className="content">
             <div className="header">{this.props.name}</div>
@@ -26,4 +29,3 @@ class PokemonCard extends React.Component {
 
 export default PokemonCard
 
-//wwwwwtttttffffff
